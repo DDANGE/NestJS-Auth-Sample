@@ -5,9 +5,13 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // 전역으로 사용
+    }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'nest-auth-test.sqlite',
